@@ -127,19 +127,19 @@ COPY prepare-nginx-proxy.sh /docker-entrypoint.d/prepare-nginx-proxy.sh
 RUN chown nginx:nginx /etc/nginx/* -R && \
     chown nginx:nginx /docker-entrypoint.d/* && \
     # changes for upstream configure
-    sed -i 's/localhost:5010/$service_api_system/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5012/$service_backup/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5021/$service_crm/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5007/$service_files/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5004/$service_people_server/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5020/$service_projects_server/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5000/$service_api/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5003/$service_studio/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5023/$service_calendar/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:9899/$service_socket/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:5022/$service_mail/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/localhost:9999/$service_urlshortener/' /etc/nginx/conf.d/onlyoffice.conf && \
-    sed -i 's/172.*/$document_server;/' /etc/nginx/conf.d/onlyoffice.conf
+    sed -i 's/localhost:5010/$service_api_system/'      /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5012/$service_backup/'          /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5021/$service_crm/'             /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5007/$service_files/'           /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5004/$service_people_server/'   /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5020/$service_projects_server/' /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5000/$service_api/'             /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5003/$service_studio/'          /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5023/$service_calendar/'        /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:9899/$service_socket/'          /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:5022/$service_mail/'            /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/localhost:9999/$service_urlshortener/'    /etc/nginx/conf.d/onlyoffice-upstream.conf && \
+    sed -i 's/172.*/$document_server;/'                 /etc/nginx/conf.d/onlyoffice.conf
 
 ## ASC.ApiSystem ##
 FROM builder AS api_system
