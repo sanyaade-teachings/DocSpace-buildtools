@@ -85,7 +85,7 @@ services_name_backend+=(ASC.Thumbnails.Svc)
 services_name_backend+=(ASC.UrlShortener.Svc)
 services_name_backend+=(ASC.Web.Api)
 services_name_backend+=(ASC.Web.Studio)
-# services_name_backend+=(ASC.SsoAuth.Svc)
+services_name_backend+=(ASC.SsoAuth.Svc)
 
 # Publish backend services
 for i in ${!services_name_backend[@]}; do
@@ -99,7 +99,7 @@ done
 services_name_backend_nodejs=(ASC.Thumbnails)
 services_name_backend_nodejs+=(ASC.UrlShortener)
 services_name_backend_nodejs+=(ASC.Socket.IO)
-# services_name_backend_nodejs+=(ASC.SsoAuth)
+services_name_backend_nodejs+=(ASC.SsoAuth)
 
 # Publish backend services (Nodejs) 
 for i in ${!services_name_backend_nodejs[@]}; do

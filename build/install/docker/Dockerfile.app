@@ -1,7 +1,7 @@
 ### STAGE 1: Base image ######
 ARG SRC_PATH=/app/onlyoffice/src
 ARG BUILD_PATH=/var/www
-ARG REPO_TAG=5.0.202-focal-amd64
+ARG REPO_TAG=6.0
 ARG REPO=mcr.microsoft.com/dotnet/sdk
 
 FROM $REPO:$REPO_TAG AS base
@@ -67,7 +67,7 @@ COPY config/mysql/conf.d/mysql.cnf /etc/mysql/conf.d/mysql.cnf
 RUN rm -rf /var/lib/apt/lists/*
 
 ### STAGE 2: Build ###
-FROM mcr.microsoft.com/dotnet/aspnet:5.0.4-focal-amd64 as builder
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 as builder
 ARG BUILD_PATH
 ENV BUILD_PATH=${BUILD_PATH}
 
