@@ -339,10 +339,10 @@ RUN mkdir -p /app/appserver/ASC.Files/server && \
 COPY bin-share-docker-entrypoint.sh /app/docker-entrypoint.sh
 COPY --from=base /var/www/products/ASC.Files/server/ /app/appserver/ASC.Files/server/
 COPY --from=base /var/www/products/ASC.People/server/ /app/appserver/ASC.People/server/
-COPY --from=base /var/www/products/ASC.CRM/server/ /app/appserver/ASC.CRM/server/
-COPY --from=base /var/www/products/ASC.Projects/server/ /app/appserver/ASC.Projects/server/
-COPY --from=base /var/www/products/ASC.Calendar/server/ /app/appserver/ASC.Calendar/server/
-COPY --from=base /var/www/products/ASC.Mail/server/ /app/appserver/ASC.Mail/server/
+# COPY --from=base /var/www/products/ASC.CRM/server/ /app/appserver/ASC.CRM/server/
+# COPY --from=base /var/www/products/ASC.Projects/server/ /app/appserver/ASC.Projects/server/
+# COPY --from=base /var/www/products/ASC.Calendar/server/ /app/appserver/ASC.Calendar/server/
+# COPY --from=base /var/www/products/ASC.Mail/server/ /app/appserver/ASC.Mail/server/
 ENTRYPOINT ["./app/docker-entrypoint.sh"]
 
 ## image for k8s wait-bin-share ##
