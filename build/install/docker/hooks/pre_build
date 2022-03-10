@@ -5,15 +5,15 @@ sudo wget -O docker-buildx  https://github.com/docker/buildx/releases/download/v
 sudo chmod +x docker-buildx
 sudo cp docker-buildx /usr/local/bin/
 
-DOCKERFILE="Dockerfile.app"
-REPO="onlyoffice"
-STATUS="4testing-"
-DOCKER_TAG="arm"
-BUILD_NUMBER="$(date "+%Y%m%d%H")"
-GIT_BRANCH=$SOURCE_BRANCH
-PRODUCT_VERSION=$PRODUCT_VERSION
-BUILD_ARGS=$BUILD_ARGS
-DEPLOY_ARGS=$DEPLOY_ARGS
-REPO_SDK_TAG=$REPO_SDK_TAG
-REPO_RUN_TAG=$REPO_RUN_TAG
+export DOCKERFILE="Dockerfile.app"
+export REPO="onlyoffice"
+export STATUS="4testing-"
+export DOCKER_TAG=$DOCKER_TAG
+export BUILD_NUMBER="$(date "+%Y%m%d%H")"
+export GIT_BRANCH=$SOURCE_BRANCH
+export PRODUCT_VERSION=$PRODUCT_VERSION
+export BUILD_ARGS=$BUILD_ARGS
+export DEPLOY_ARGS=$DEPLOY_ARGS
+export REPO_SDK_TAG=$REPO_SDK_TAG
+export REPO_RUN_TAG=$REPO_RUN_TAG
 docker-buildx bake -f build.yml
