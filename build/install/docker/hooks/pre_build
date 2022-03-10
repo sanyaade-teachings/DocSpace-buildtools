@@ -1,0 +1,19 @@
+#!/bin/bash
+sudo apt-get -y update
+sudo apt-get install -yq sudo wget
+sudo wget -O docker-buildx  https://github.com/docker/buildx/releases/download/v0.7.0/buildx-v0.7.0.linux-amd64
+sudo chmod +x docker-buildx
+sudo cp docker-buildx /usr/local/bin/
+
+DOCKERFILE="Dockerfile.app"
+REPO="onlyoffice"
+STATUS="4testing-"
+DOCKER_TAG="arm"
+BUILD_NUMBER="$(date "+%Y%m%d%H")"
+GIT_BRANCH=$SOURCE_BRANCH
+PRODUCT_VERSION=$PRODUCT_VERSION
+BUILD_ARGS=$BUILD_ARGS
+DEPLOY_ARGS=$DEPLOY_ARGS
+REPO_SDK_TAG=$REPO_SDK_TAG
+REPO_RUN_TAG=$REPO_RUN_TAG
+docker-buildx bake -f build.yml

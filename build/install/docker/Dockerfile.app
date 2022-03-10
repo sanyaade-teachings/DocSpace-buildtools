@@ -25,8 +25,8 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-RUN echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null && \
-    apt-get -y update && \
+#RUN echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null && \
+RUN    apt-get -y update && \
     apt-get -y upgrade && \
     apt-get -y dist-upgrade && \
     apt-get install -yq sudo locales && \
@@ -84,8 +84,8 @@ RUN mkdir -p /var/log/onlyoffice && \
     chown onlyoffice:onlyoffice /app/onlyoffice -R && \
     chown onlyoffice:onlyoffice /var/log -R  && \
     chown onlyoffice:onlyoffice /var/www -R
-RUN echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null && \
-    apt-get -y update && \
+# RUN echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null && \
+RUN   apt-get -y update && \
     apt-get -y upgrade && \
     apt-get install -yq sudo nano curl vim && \
     curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash - && \
@@ -108,8 +108,8 @@ ENV DNS_NAMESERVER=127.0.0.11 \
     COUNT_WORKER_CONNECTIONS=$COUNT_WORKER_CONNECTIONS \
     MAP_HASH_BUCKET_SIZE=""
 
-RUN echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null && \ 
-    apt-get -y update && \
+#RUN echo "nameserver 8.8.8.8" | tee /etc/resolv.conf > /dev/null && \ 
+RUN    apt-get -y update && \
     apt-get -y upgrade && \
     apt-get install -yq vim && \
     # Remove default nginx website
