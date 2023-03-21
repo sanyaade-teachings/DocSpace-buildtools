@@ -25,6 +25,7 @@
 // International. See the License terms at http://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 namespace ASC.Web.Studio;
+
 public class Startup : BaseStartup
 {
     public Startup(IConfiguration configuration, IHostEnvironment hostEnvironment) : base(configuration, hostEnvironment)
@@ -77,13 +78,15 @@ public class Startup : BaseStartup
         DIHelper.TryAdd<LinkedInLoginProvider>();
         DIHelper.TryAdd<SsoHandlerService>();
 
-
         services.AddHttpClient();
 
         DIHelper.TryAdd<DbWorker>();
 
         services.AddHostedService<WorkerService>();
         DIHelper.TryAdd<WorkerService>();
+
+        services.AddHostedService<ClearEventsService>();
+        DIHelper.TryAdd<ClearEventsService>();
 
         services.AddHttpClient("webhook")
         .SetHandlerLifetime(TimeSpan.FromMinutes(5))

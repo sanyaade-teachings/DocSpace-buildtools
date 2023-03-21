@@ -25,6 +25,7 @@
 // International. See the License terms at http://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 namespace ASC.ClearEvents.Log;
+
 internal static partial class ClearEventsServiceLogger
 {
     [LoggerMessage(Level = LogLevel.Information, Message = "Timer Clear Events Service running.")]

@@ -25,6 +25,8 @@
 // International. See the License terms at http://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 global using System.Collections.Concurrent;
+global using System.Linq.Expressions;
+global using System.Net;
 global using System.Net.Security;
 global using System.Security.Cryptography;
 global using System.Text;
@@ -33,19 +35,26 @@ global using System.Text.Json.Serialization;
 
 global using ASC.Api.Core;
 global using ASC.Api.Core.Extensions;
+global using ASC.ClearEvents.Log;
+global using ASC.ClearEvents.Services;
 global using ASC.Common;
 global using ASC.Common.Caching;
 global using ASC.Common.Log;
 global using ASC.Common.Utils;
+global using ASC.Core.Common.EF;
 global using ASC.Core.Common.Settings;
+global using ASC.Core.Tenants;
 global using ASC.Data.Storage;
 global using ASC.FederatedLogin;
 global using ASC.FederatedLogin.LoginProviders;
+global using ASC.MessagingSystem.EF.Context;
+global using ASC.MessagingSystem.EF.Model;
 global using ASC.Web.Core.HttpHandlers;
 global using ASC.Web.Studio;
 global using ASC.Web.Webhooks;
 global using ASC.Webhooks;
 global using ASC.Webhooks.Core;
+global using ASC.Webhooks.Extension;
 global using ASC.Webhooks.Service.Log;
 global using ASC.Webhooks.Service.Services;
 
@@ -54,8 +63,14 @@ global using Autofac;
 global using Microsoft.AspNetCore.Builder;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.HttpOverrides;
+global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Hosting.WindowsServices;
 global using Microsoft.Extensions.Logging;
 
+global using NLog;
+
 global using Polly;
 global using Polly.Extensions.Http;
+
+global using ILogger = Microsoft.Extensions.Logging.ILogger;
+global using LogLevel = Microsoft.Extensions.Logging.LogLevel;

@@ -25,6 +25,7 @@
 // International. See the License terms at http://creativecommons.org/licenses/by-sa/4.0/legalcode
 
 namespace ASC.Webhooks.Service.Log;
+
 internal static partial class WebhookSenderLogger
 {
     [LoggerMessage(Level = LogLevel.Debug, Message = "Procedure: Finish.")]
