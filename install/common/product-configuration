@@ -23,7 +23,7 @@ DB_PWD=""
 APP_HOST="localhost"
 APP_PORT="80"
 
-ELK_SHEME="http"
+ELK_SCHEME="http"
 ELK_HOST="localhost"
 ELK_PORT="9200"
 
@@ -57,9 +57,9 @@ while [ "$1" != "" ]; do
 			fi
 		;;
 
-		-ess | --elasticsheme )
+		-ess | --elasticscheme )
 			if [ "$2" != "" ]; then
-				ELK_SHEME=$2
+				ELK_SCHEME=$2
 				shift
 			fi
 		;;
@@ -678,7 +678,7 @@ setup_elasticsearch() {
 
 	#Save elasticsearch parameters in .json
 	[[ $1 == "EXTERNAL_ELASTIC_SERVER" ]] && local EXTERNAL_ELASTIC_FLAG="rewrite"
-	save_undefined_param "${APP_DIR}/elastic.${ENVIRONMENT}.json" "elastic.Scheme" "${ELK_SHEME}" "$EXTERNAL_ELASTIC_FLAG"
+	save_undefined_param "${APP_DIR}/elastic.${ENVIRONMENT}.json" "elastic.Scheme" "${ELK_SCHEME}" "$EXTERNAL_ELASTIC_FLAG"
 	save_undefined_param "${APP_DIR}/elastic.${ENVIRONMENT}.json" "elastic.Host" "${ELK_HOST}" "$EXTERNAL_ELASTIC_FLAG"
 	save_undefined_param "${APP_DIR}/elastic.${ENVIRONMENT}.json" "elastic.Port" "${ELK_PORT}" "$EXTERNAL_ELASTIC_FLAG"
 	save_undefined_param "${APP_DIR}/elastic.${ENVIRONMENT}.json" "elastic.Threads" "1" "$EXTERNAL_ELASTIC_FLAG"

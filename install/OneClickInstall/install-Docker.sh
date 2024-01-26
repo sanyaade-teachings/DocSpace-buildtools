@@ -77,7 +77,7 @@ MYSQL_PORT=""
 DATABASE_MIGRATION="true"
 
 ELK_VERSION=""
-ELK_SHEME=""
+ELK_SCHEME=""
 ELK_HOST=""
 ELK_PORT=""
 
@@ -226,7 +226,7 @@ while [ "$1" != "" ]; do
 
 		-espr | --elasticprotocol )
 			if [ "$2" != "" ]; then
-				ELK_SHEME=$2
+				ELK_SCHEME=$2
 				shift
 			fi
 		;;
@@ -1109,7 +1109,7 @@ set_docspace_params() {
 	APP_CORE_BASE_DOMAIN=${APP_CORE_BASE_DOMAIN:-$(get_env_parameter "APP_CORE_BASE_DOMAIN" "${CONTAINER_NAME}")};
 	EXTERNAL_PORT=${EXTERNAL_PORT:-$(get_env_parameter "EXTERNAL_PORT" "${CONTAINER_NAME}")};
 
-	ELK_SHEME=${ELK_SHEME:-$(get_env_parameter "ELK_SHEME" "${CONTAINER_NAME}")};
+	ELK_SCHEME=${ELK_SCHEME:-$(get_env_parameter "ELK_SCHEME" "${CONTAINER_NAME}")};
 	ELK_HOST=${ELK_HOST:-$(get_env_parameter "ELK_HOST" "${CONTAINER_NAME}")};
 	ELK_PORT=${ELK_PORT:-$(get_env_parameter "ELK_PORT" "${CONTAINER_NAME}")};
 
@@ -1256,7 +1256,7 @@ install_elasticsearch () {
 		docker-compose -f $BASE_DIR/elasticsearch.yml up -d
 	elif [ ! -z "$ELK_HOST" ]; then
 		establish_conn ${ELK_HOST} "${ELK_PORT:-"9200"}" "Elasticsearch"
-		reconfigure ELK_SHEME "${ELK_SHEME:-"http"}"	
+		reconfigure ELK_SCHEME "${ELK_SCHEME:-"http"}"	
 		reconfigure ELK_HOST ${ELK_HOST}
 		reconfigure ELK_PORT "${ELK_PORT:-"9200"}"	
 	fi
