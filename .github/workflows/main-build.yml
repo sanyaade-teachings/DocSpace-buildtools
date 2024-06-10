@@ -19,6 +19,7 @@ env:
   REPO: "onlyoffice"
   DOCKER_IMAGE_PREFIX: "4testing-docspace"
   DOCKERFILE: "Dockerfile.app"
+  CACHE_DIRECTORY: /home/runner/docker-cache-directory
 
 jobs:
 
@@ -49,6 +50,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Restore Cached Docker layers
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ env.CACHE_DIRECTORY }}
+          key: ${{ runner.os }}-docker    
           
       - name: Build 4testing
         id: build
@@ -69,10 +76,18 @@ jobs:
           --set *.platform=linux/amd64 \
           --set *.args.PRODUCT_VERSION=${PRODUCT_VERSION} \
           --set *.args.BUILD_NUMBER=${{github.run_number}} \
+          --cache-to type=local,dest=${{ env.CACHE_DIRECTORY }} \
+          --cache-from type=local,src=${{ env.CACHE_DIRECTORY }} \
           --push
 
           echo "version=${DOCKER_TAG}" >> "$GITHUB_OUTPUT"
         shell: bash
+
+      - name: Save Cache Docker layers
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ env.CACHE_DIRECTORY }}
+          key: ${{ runner.os }}-docker
 
       - name: Run zap action if needed
         if: ${{ github.event.action == 'cron-trigger-action' || github.event_name == 'workflow_dispatch' }}
