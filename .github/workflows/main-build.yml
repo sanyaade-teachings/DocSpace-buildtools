@@ -28,7 +28,7 @@ jobs:
     strategy:
       matrix:
         platform: [linux/amd64]
-        branch: ${{ github.event.client_payload.branches }}
+        branch: ${{ toJson(github.event.client_payload.branches) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
