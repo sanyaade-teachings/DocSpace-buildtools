@@ -16,6 +16,11 @@ ARG DEPLOY_ARGS="deploy"
 ARG DEBUG_INFO="true"
 ARG PUBLISH_CNF="Release"
 
+ARG BUILDTOOLS_COMMIT=""
+ARG SERVER_COMMIT=""
+ARG CLIENT_COMMIT=""
+ARG CAMPAIGNS_COMMIT=""
+
 LABEL onlyoffice.appserver.release-date="${RELEASE_DATE}" \
       maintainer="Ascensio System SIA <support@onlyoffice.com>"
 
@@ -41,9 +46,13 @@ RUN apt-get -y update && \
 
 ADD https://api.github.com/repos/ONLYOFFICE/DocSpace-buildtools/git/refs/heads/${GIT_BRANCH} version.json
 RUN git clone -b ${GIT_BRANCH} https://github.com/ONLYOFFICE/DocSpace-buildtools.git ${SRC_PATH}/buildtools && \
+    if [ -n "${BUILDTOOLS_COMMIT}" ]; then git -C ${SRC_PATH}/buildtools checkout ${BUILDTOOLS_COMMIT}; fi && \
     git clone --recurse-submodules -b ${GIT_BRANCH} https://github.com/ONLYOFFICE/DocSpace-Server.git ${SRC_PATH}/server && \
+    if [ -n "${SERVER_COMMIT}" ]; then git -C ${SRC_PATH}/server checkout ${SERVER_COMMIT}; fi && \
     git clone -b ${GIT_BRANCH} https://github.com/ONLYOFFICE/DocSpace-Client.git ${SRC_PATH}/client && \
-    git clone -b "master" --depth 1 https://github.com/ONLYOFFICE/ASC.Web.Campaigns.git ${SRC_PATH}/campaigns
+    if [ -n "${CLIENT_COMMIT}" ]; then git -C ${SRC_PATH}/client checkout ${CLIENT_COMMIT}; fi && \
+    git clone -b "master" --depth 1 https://github.com/ONLYOFFICE/ASC.Web.Campaigns.git ${SRC_PATH}/campaigns && \
+    if [ -n "${CAMPAIGNS_COMMIT}" ]; then git -C ${SRC_PATH}/campaigns checkout ${CAMPAIGNS_COMMIT}; fi
 
 RUN cd ${SRC_PATH} && \
     mkdir -p /app/onlyoffice/config/ && \
