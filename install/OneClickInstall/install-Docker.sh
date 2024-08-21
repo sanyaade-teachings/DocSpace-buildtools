@@ -87,6 +87,7 @@ REDIS_PORT=""
 REDIS_USER_NAME=""
 REDIS_PASSWORD=""
 
+RABBIT_PROTOCOL=""
 RABBIT_HOST=""
 RABBIT_PORT=""
 RABBIT_USER_NAME=""
@@ -405,6 +406,13 @@ while [ "$1" != "" ]; do
 		-rdspass | --redispassword )
 			if [ "$2" != "" ]; then
 				REDIS_PASSWORD=$2
+				shift
+			fi
+		;;
+
+		-rbpr | --rabbitmqprotocol )
+			if [ "$2" != "" ]; then
+				RABBIT_PROTOCOL=$2
 				shift
 			fi
 		;;
@@ -1410,6 +1418,7 @@ services_check_connection () {
 	}
 	[[ ! -z "$RABBIT_HOST" ]] && {
 		establish_conn ${RABBIT_HOST} "${RABBIT_PORT:-5672}" "RabbitMQ"
+		reconfigure RABBIT_PROTOCOL ${RABBIT_PROTOCOL:-amqp}
 		reconfigure RABBIT_HOST ${RABBIT_HOST}
 		reconfigure RABBIT_PORT "${RABBIT_PORT:-5672}"
 		reconfigure RABBIT_USER_NAME ${RABBIT_USER_NAME}
