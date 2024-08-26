@@ -613,9 +613,11 @@ setup_docs() {
 	echo "OK"
 }
 
-setup_enterprise() {
-	if $PACKAGE_MANAGER ${PACKAGE_SYSNAME}-documentserver-ee >/dev/null 2>&1; then
-		LICENCE_PATH="/var/www/$PACKAGE_SYSNAME/Data/license.lic"
+setup_installation_type() {
+	if ${PACKAGE_MANAGER} ${PACKAGE_SYSNAME}-documentserver-de >/dev/null 2>&1; then
+		LICENCE_PATH="/var/www/${PACKAGE_SYSNAME}/Data/license.lic"
+	elif ${PACKAGE_MANAGER} ${PACKAGE_SYSNAME}-documentserver-ee >/dev/null 2>&1; then
+		LICENCE_PATH="/var/www/${PACKAGE_SYSNAME}/Data/license_de.lic"
 	fi
 
 	save_undefined_param "${USER_CONF}" "license.file.path" "${LICENCE_PATH}" "rewrite"
@@ -869,8 +871,9 @@ if [[ ! -z $DOCUMENT_SERVER_URL_EXTERNAL ]]; then
     setup_docs "EXTERNAL_DOCS_SERVER"
 elif $PACKAGE_MANAGER ${PACKAGE_SYSNAME}-documentserver >/dev/null 2>&1 || $PACKAGE_MANAGER ${PACKAGE_SYSNAME}-documentserver-de >/dev/null 2>&1 || $PACKAGE_MANAGER ${PACKAGE_SYSNAME}-documentserver-ee >/dev/null 2>&1; then
     setup_docs "LOCAL_DOCS_SERVER"
-    setup_enterprise
 fi
+
+setup_installation_type
 
 if $PACKAGE_MANAGER openresty >/dev/null 2>&1; then
     setup_openresty

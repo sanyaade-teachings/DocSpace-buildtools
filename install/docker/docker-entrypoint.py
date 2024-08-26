@@ -177,6 +177,8 @@ updateJsonData(jsonData,"$.debug-info.enabled", DEBUG_INFO)
 updateJsonData(jsonData,"$.web.samesite", SAMESITE)
 if INSTALLATION_TYPE == "ENTERPRISE":
     updateJsonData(jsonData, "$.license.file.path", "/app/onlyoffice/data/license.lic")
+elif INSTALLATION_TYPE == "DEVELOPMENT":
+    updateJsonData(jsonData, "$.license.file.path", "/app/onlyoffice/data/license.lic")
 
 ip_address = netifaces.ifaddresses('eth0').get(netifaces.AF_INET)[0].get('addr')
 netmask = netifaces.ifaddresses('eth0').get(netifaces.AF_INET)[0].get('netmask')
