@@ -151,6 +151,12 @@ Description: {{product}}-ssoauth
 	SAML-based single sign-on (SSO) authentication to provide a more quick, 
 	easy and secure way to access DocSpace for users
 
+Package: {{product}}-identity
+Architecture: all
+Multi-Arch: foreign
+Depends: {{product}}-common (= {{package_header_tag_version}}), nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
+Description: {{product}}-identity
+
 Package: {{product}}-backup-background
 Architecture: all
 Multi-Arch: foreign

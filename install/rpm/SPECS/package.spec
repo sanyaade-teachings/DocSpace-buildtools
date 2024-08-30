@@ -157,6 +157,16 @@ The service responsible for enabling and configuring
 SAML-based single sign-on (SSO) authentication to provide a more quick, 
 easy and secure way to access DocSpace for users
 
+%package        identity
+Packager:       %{packager}
+Summary:        Identity
+Group:          Applications/Internet
+Requires:       %name-common  = %version-%release
+Requires:       dotnet-sdk-8.0
+AutoReqProv:    no
+BuildArch:      noarch
+%description    identity
+
 %package        clear-events
 Packager:       %{packager}
 Summary:        Clear-events

@@ -1,0 +1,3 @@
+debian/build/server/publish/services/ASC.Identity.Registration/service/*         var/www/{{product}}/services/ASC.Identity.Registration
+debian/build/server/publish/services/ASC.Identity.Authorization/service/*         var/www/{{product}}/services/ASC.Identity.Authorization
+debian/build/server/publish/services/ASC.Identity.Migration/service/*         var/www/{{product}}/services/ASC.Identity.Migration

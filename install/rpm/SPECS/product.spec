@@ -51,6 +51,7 @@ Requires:       %name-proxy = %version-%release
 Requires:       %name-radicale = %version-%release
 Requires:       %name-socket = %version-%release
 Requires:       %name-ssoauth = %version-%release
+Requires:       %name-identity = %version-%release
 Requires:       %name-studio = %version-%release
 Requires:       %name-studio-notify = %version-%release
 Requires:       openssl

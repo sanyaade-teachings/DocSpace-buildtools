@@ -63,6 +63,9 @@ SERVICE_NAME=(
 	studio
 	backup
 	ssoauth
+	identity-api
+	identity-authorization
+	identity-migration
 	clear-events
 	backup-background
 	doceditor
@@ -138,6 +141,21 @@ reassign_values (){
 		WORK_DIR="${BASE_DIR}/services/ASC.SsoAuth/"
 		EXEC_FILE="app.js"
 		DEPENDENCY_LIST=""
+	;;
+	identity-api )
+		SERVICE_PORT="9090"
+		WORK_DIR="${BASE_DIR}/services/ASC.Identity.Registration/"
+		EXEC_FILE="app.jar"
+	;;
+	identity-authorization )
+		SERVICE_PORT="8080"
+		WORK_DIR="${BASE_DIR}/services/ASC.Identity.Authorization/"
+		EXEC_FILE="app.jar"
+	;;
+	identity-migration )
+		SERVICE_PORT="8081"
+		WORK_DIR="${BASE_DIR}/services/ASC.Identity.Migration/"
+		EXEC_FILE="app.jar"
 	;;
 	clear-events )
 		SERVICE_PORT="5027"
