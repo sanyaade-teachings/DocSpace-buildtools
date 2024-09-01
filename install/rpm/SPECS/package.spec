@@ -157,15 +157,35 @@ The service responsible for enabling and configuring
 SAML-based single sign-on (SSO) authentication to provide a more quick, 
 easy and secure way to access DocSpace for users
 
-%package        identity
+%package        identity-migration
 Packager:       %{packager}
-Summary:        Identity
+Summary:        Identity-Migration
 Group:          Applications/Internet
 Requires:       %name-common  = %version-%release
-Requires:       dotnet-sdk-8.0
+Requires:       java > 21
 AutoReqProv:    no
 BuildArch:      noarch
-%description    identity
+%description    identity-migration
+
+%package        identity-authorization
+Packager:       %{packager}
+Summary:        Identity-Authorization
+Group:          Applications/Internet
+Requires:       %name-common  = %version-%release
+Requires:       java > 21
+AutoReqProv:    no
+BuildArch:      noarch
+%description    identity-authorization
+
+%package        identity-api
+Packager:       %{packager}
+Summary:        Identity-Api
+Group:          Applications/Internet
+Requires:       %name-common  = %version-%release
+Requires:       java > 21
+AutoReqProv:    no
+BuildArch:      noarch
+%description    identity-api
 
 %package        clear-events
 Packager:       %{packager}
