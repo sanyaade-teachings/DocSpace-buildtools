@@ -42,12 +42,6 @@ switch ( $env:DOCUMENT_SERVER_VERSION_EE )
   custom { $DOCUMENT_SERVER_EE_LINK = $env:DOCUMENT_SERVER_EE_CUSTOM_LINK.Replace(",", "") }
 }
 
-switch ( $env:DOCUMENT_SERVER_VERSION_DE )
-{
-  latest { $DOCUMENT_SERVER_EE_LINK = "https://download.onlyoffice.com/install/documentserver/windows/onlyoffice-documentserver-de.exe" }
-  custom { $DOCUMENT_SERVER_EE_LINK = $env:DOCUMENT_SERVER_DE_CUSTOM_LINK.Replace(",", "") }
-}
-
 switch ( $env:DOCUMENT_SERVER_VERSION_CE )
 {
   latest { $DOCUMENT_SERVER_CE_LINK = "https://download.onlyoffice.com/install/documentserver/windows/onlyoffice-documentserver.exe" }
@@ -93,13 +87,6 @@ $prerequisites = @(
     download_allways = $true; 
     name = "onlyoffice-documentserver-ee.exe"; 
     link = $DOCUMENT_SERVER_EE_LINK
-  }
-
-  @{  
-    # Downloading onlyoffice-documentserver-de for DocSpace Developer
-    download_allways = $true; 
-    name = "onlyoffice-documentserver-de.exe"; 
-    link = $DOCUMENT_SERVER_DE_LINK
   }
 
   @{
