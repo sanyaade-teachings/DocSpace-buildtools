@@ -105,9 +105,39 @@ $path_nuget_packages = "${pwd}\server\.nuget\packages\"
 $nuget_packages = @(
   @{  
     download_allways = $false; 
-    name = "rabbitmq.client.3.6.5.nupkg"; 
-    link = "https://www.nuget.org/api/v2/package/RabbitMQ.Client/3.6.5";
+    name = "rabbitmq.client.6.8.1.nupkg"; 
+    link = "https://www.nuget.org/api/v2/package/RabbitMQ.Client/6.8.1";
   }
+  @{
+    download_allways = $false; 
+    name = "system.buffers.4.5.1.nupkg"; 
+    link = "https://www.nuget.org/api/v2/package/System.Buffers/4.5.1";
+   }
+  @{
+    download_allways = $false; 
+    name = "system.memory.4.5.5.nupkg"; 
+    link = "https://www.nuget.org/api/v2/package/System.Memory/4.5.5";
+   }
+  @{
+    download_allways = $false; 
+    name = "system.numerics.vectors.4.5.0.nupkg"; 
+    link = "https://www.nuget.org/api/v2/package/System.Numerics.Vectors/4.5.0";
+   }
+  @{
+    download_allways = $false; 
+    name = "system.runtime.compilerservices.unsafe.4.5.3.nupkg"; 
+    link = "https://www.nuget.org/api/v2/package/System.Runtime.CompilerServices.Unsafe/4.5.3";
+   }
+  @{
+    download_allways = $false; 
+    name = "system.threading.channels.7.0.0.nupkg"; 
+    link = "https://www.nuget.org/api/v2/package/System.Threading.Channels/7.0.0";
+   }
+  @{
+    download_allways = $false; 
+    name = "system.threading.tasks.extensions.4.5.4.nupkg"; 
+    link = "https://www.nuget.org/api/v2/package/System.Threading.Tasks.Extensions/4.5.4";
+   }
 )
 
 $path_enterprise_prereq = "${pwd}\buildtools\install\win\redist\"
