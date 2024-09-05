@@ -42,11 +42,26 @@ switch ( $env:DOCUMENT_SERVER_VERSION_EE )
   custom { $DOCUMENT_SERVER_EE_LINK = $env:DOCUMENT_SERVER_EE_CUSTOM_LINK.Replace(",", "") }
 }
 
+switch ( $env:DOCUMENT_SERVER_VERSION_DE )
+{
+  latest { $DOCUMENT_SERVER_EE_LINK = "https://download.onlyoffice.com/install/documentserver/windows/onlyoffice-documentserver-de.exe" }
+  custom { $DOCUMENT_SERVER_EE_LINK = $env:DOCUMENT_SERVER_DE_CUSTOM_LINK.Replace(",", "") }
+}
+
 switch ( $env:DOCUMENT_SERVER_VERSION_CE )
 {
   latest { $DOCUMENT_SERVER_CE_LINK = "https://download.onlyoffice.com/install/documentserver/windows/onlyoffice-documentserver.exe" }
   custom { $DOCUMENT_SERVER_CE_LINK = $env:DOCUMENT_SERVER_CE_CUSTOM_LINK.Replace(",", "") }
 }
+
+$path_nuget = "${pwd}\buildtools\install\win\"
+$nuget_exe = @(
+  @{  
+    download_allways = $false; 
+    name = "nuget.exe"; 
+    link = "https://dist.nuget.org/win-x86-commandline/latest/nuget.exe";
+  }
+)
 
 $psql_version = '14.0'
 
@@ -78,6 +93,13 @@ $prerequisites = @(
     download_allways = $true; 
     name = "onlyoffice-documentserver-ee.exe"; 
     link = $DOCUMENT_SERVER_EE_LINK
+  }
+
+  @{  
+    # Downloading onlyoffice-documentserver-de for DocSpace Developer
+    download_allways = $true; 
+    name = "onlyoffice-documentserver-de.exe"; 
+    link = $DOCUMENT_SERVER_DE_LINK
   }
 
   @{
@@ -245,6 +267,8 @@ $enterprise_prerequisites = @(
     link = "https://github.com/certbot/certbot/releases/download/v2.6.0/certbot-beta-installer-win_amd64_signed.exe"
   }
 )
+
+DownloadComponents $nuget_exe $path_nuget
 
 DownloadComponents $prerequisites $path_prereq
 
