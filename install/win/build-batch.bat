@@ -1,5 +1,5 @@
 REM echo ######## Set variables ########
-set "publisher="Ascensio System SIA""
+set "publisher="Ascensio System SIAA""
 set "nuget="%cd%\server\thirdparty\SimpleRestServices\src\.nuget\NuGet.exe""
 set "environment=production"
 set "opensearch_version=2.11.1"
