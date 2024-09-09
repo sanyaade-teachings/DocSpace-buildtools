@@ -298,7 +298,8 @@ restart_services() {
 	echo -n "Restarting services... "
 	for SVC in login api socket studio-notify notify \
 	people-server files files-services studio backup api-system \
-	clear-events backup-background ssoauth doceditor healthchecks
+	clear-events backup-background ssoauth doceditor healthchecks \
+	identity-authorization identity-api identity-migration
 	do
 		systemctl enable ${PRODUCT}-$SVC >/dev/null 2>&1
 		systemctl restart ${PRODUCT}-$SVC
@@ -533,7 +534,9 @@ setup_openresty(){
 					PORTS+=('5032') #ASC.Data.Backup.BackgroundTasks
 					PORTS+=('5033') #ASC.Web.HealthChecks
 					PORTS+=('5100') #ASC.ApiCache
-					PORTS+=('8081') #Storybook
+					PORTS+=('8080') #ASC.Identity.Authorization
+					PORTS+=('8081') #ASC.Identity.Migration
+					PORTS+=('9090') #ASC.Identity.API
 					PORTS+=('9834') #ASC.SsoAuth
 					PORTS+=('9899') #ASC.Socket.IO
 					setsebool -P httpd_can_network_connect on

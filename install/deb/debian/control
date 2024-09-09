@@ -31,7 +31,10 @@ Depends: debconf, openssl,
          {{product}}-socket (= {{package_header_tag_version}}),
          {{product}}-ssoauth (= {{package_header_tag_version}}),
          {{product}}-studio (= {{package_header_tag_version}}),
-         {{product}}-studio-notify (= {{package_header_tag_version}})
+         {{product}}-studio-notify (= {{package_header_tag_version}}),
+				 {{product}}-identity-api (= {{package_header_tag_version}}),
+				 {{product}}-identity-migration (= {{package_header_tag_version}}),
+				 {{product}}-identity-authorization (= {{package_header_tag_version}})
 Description: {{product}}
 	ONLYOFFICE {{product}} is a new way to collaborate on documents with teams, 
 	clients, partners, etc., based on the concept of rooms - special spaces with 
@@ -154,19 +157,19 @@ Description: {{product}}-ssoauth
 Package: {{product}}-identity-api
 Architecture: all
 Multi-Arch: foreign
-Depends: {{product}}-common (= {{package_header_tag_version}}), java (> 21), nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
+Depends: {{product}}-common (= {{package_header_tag_version}}), openjdk-21-jdk-headless, nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
 Description: {{product}}-identity-api
 
 Package: {{product}}-identity-migration
 Architecture: all
 Multi-Arch: foreign
-Depends: {{product}}-common (= {{package_header_tag_version}}), java (> 21), nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
+Depends: {{product}}-common (= {{package_header_tag_version}}), openjdk-21-jdk-headless, nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
 Description: {{product}}-identity-migration
 
 Package: {{product}}-identity-authorization
 Architecture: all
 Multi-Arch: foreign
-Depends: {{product}}-common (= {{package_header_tag_version}}), java (> 21), nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
+Depends: {{product}}-common (= {{package_header_tag_version}}), openjdk-21-jdk-headless, nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
 Description: {{product}}-identity-authorization
 
 Package: {{product}}-backup-background
