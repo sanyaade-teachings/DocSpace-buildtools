@@ -396,7 +396,7 @@
     <ROW JsonProperty="Root_9" Name="Root" Condition="1" Order="0" Flags="60"/>
     <ROW JsonProperty="Scheme" Parent="elastic" Name="Scheme" Condition="1" Order="1" Flags="57" Value="[OPENSEARCH_SCHEME]"/>
     <ROW JsonProperty="TeamlabsiteProviders" Parent="options" Name="TeamlabsiteProviders" Condition="1" Order="1" Flags="61"/>
-    <ROW JsonProperty="Uri" Parent="RabbitMQ" Name="Uri" Condition="1" Order="6" Flags="57" Value="[AMQP_PROTOCOL]://[AMQP_USER]:[AMQP_PWD]@[AMQP_HOST]:[AMQP_PORT]/[AMQP_VHOST]"/>
+    <ROW JsonProperty="Uri" Parent="RabbitMQ" Name="Uri" Condition="1" Order="6" Flags="57" Value="[AMQP_PROTOCOL]://[AMQP_USER]:[AMQP_PWD]@[AMQP_HOST]:[AMQP_PORT][AMQP_VHOST]"/>
     <ROW JsonProperty="UserName" Parent="RabbitMQ" Name="UserName" Condition="1" Order="1" Flags="57" Value="[AMQP_USER]"/>
     <ROW JsonProperty="VirtualHost" Parent="RabbitMQ" Name="VirtualHost" Condition="1" Order="4" Flags="57" Value="[AMQP_VHOST]"/>
     <ROW JsonProperty="_" Parent="Hosts" Name="0" Condition="1" Order="0" Flags="60"/>

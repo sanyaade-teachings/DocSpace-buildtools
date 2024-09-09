@@ -71,7 +71,7 @@ namespace Utils
             {
                 ConnectionFactory factory = new ConnectionFactory();
 
-                var uri = new Uri(string.Format("{0}://{1}:{2}@{3}:{4}/{5}",
+                var uri = new Uri(string.Format("{0}://{1}:{2}@{3}:{4}{5}",
                  session["AMQP_PROTOCOL"],
                  session["AMQP_USER"],
                  session["AMQP_PWD"],
