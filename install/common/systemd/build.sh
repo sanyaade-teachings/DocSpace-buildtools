@@ -63,9 +63,9 @@ SERVICE_NAME=(
 	studio
 	backup
 	ssoauth
-	identity-api
 	identity-authorization
 	identity-migration
+	identity-api
 	clear-events
 	backup-background
 	doceditor

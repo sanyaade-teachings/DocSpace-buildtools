@@ -159,18 +159,21 @@ Architecture: all
 Multi-Arch: foreign
 Depends: {{product}}-common (= {{package_header_tag_version}}), openjdk-21-jdk-headless, ${misc:Depends}, ${shlibs:Depends}
 Description: {{product}}-identity-api
+  Some description
 
 Package: {{product}}-identity-migration
 Architecture: all
 Multi-Arch: foreign
 Depends: {{product}}-common (= {{package_header_tag_version}}), openjdk-21-jdk-headless, nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
 Description: {{product}}-identity-migration
+  Some description
 
 Package: {{product}}-identity-authorization
 Architecture: all
 Multi-Arch: foreign
 Depends: {{product}}-common (= {{package_header_tag_version}}), openjdk-21-jdk-headless, nodejs (>= 16), ${misc:Depends}, ${shlibs:Depends}
 Description: {{product}}-identity-authorization
+  Some description
 
 Package: {{product}}-backup-background
 Architecture: all
